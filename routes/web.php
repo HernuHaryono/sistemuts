@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,3 +19,4 @@ Route::get('/', function () {
 });
 
 route::get('/home', [HomeController::class, 'index']);
+route::get('/login', [LoginController::class, 'halamanlogin']);

@@ -130,11 +130,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
-    <script src="{{ asset('/AdminLte/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('AdminLte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('AdminLte/dist/js/adminlte.min.js') }}"></script>
+    @include('Template.script')
 </body>
 
 </html>
