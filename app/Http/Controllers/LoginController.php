@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -9,6 +13,38 @@ class LoginController extends Controller
     //
     public function halamanlogin()
     {
-        return view('Login.Login-aplikasi');
+        return view('Template.Login.Login-aplikasi');
+    }
+
+    public function postlogin(Request $request)
+    {
+        if (Auth::attempt($request->only('email', 'password'))) {
+            return redirect('/home');
+        }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
+
+    public function registrasi()
+    {
+        return view('Template.Login.registrasi');
+    }
+
+    public function simpanregistrasi(Request $request)
+    {
+        //dd($request->all());
+        User::create([
+            'name' => $request->name,
+            'level' => 'dosen',
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'remember_token' => Str::random(60)
+        ]);
+
+        return view('welcome');
     }
 }

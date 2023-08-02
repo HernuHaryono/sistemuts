@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UserSeeder extends Seeder
 {
@@ -23,6 +24,13 @@ class UserSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => bcrypt('12345'),
             'remember_token' => Str::random(60),
+        ]);
+
+        DB::table('borangdosens')->insert([
+            'nama' => 'Hernu',
+            'keterangan' => 'developer',
+            'deadline' => 'deadline',
+            'aksi' => "crud",
         ]);
     }
 }

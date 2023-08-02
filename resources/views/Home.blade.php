@@ -6,7 +6,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html lang="en">
 
 <head>
-    <title>AdminLTE 3 | Starter</title>
+    <div class="container">
+
+    </div>
+    <title>Borang UTS</title>
     @include('Template.head')
 
 </head>
@@ -42,88 +45,80 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- /.content-header -->
 
             <!-- Main content -->
-            <div class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
 
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's
-                                        content.
-                                    </p>
-
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
-                                </div>
-                            </div>
-
-                            <div class="card card-primary card-outline">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's
-                                        content.
-                                    </p>
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
-                                </div>
-                            </div><!-- /.card -->
+            <div class="container">
+                <a href="{{ route('tambahdokumen') }}" type="button" class="btn btn-success">Tambah +</a>
+                <br>
+                <br>
+                <div class="row">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ $message }}
                         </div>
-                        <!-- /.col-md-6 -->
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="m-0">Featured</h5>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-title">Special title treatment</h6>
+                    @endif
+                    <table class="table table-dark table-hover">
+                        <table class="table mb-4">
+                            <thead>
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Keterangan</th>
+                                    <th scope="col">Deadline</th>
+                                    <th scope="col">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $no = 1;
+                                @endphp
+                                @foreach ($borang as $data)
+                                    <tr>
+                                        <th scope="row">{{ $no++ }}</th>
+                                        <td>{{ $data->nama }}</td>
+                                        <td>{{ $data->keterangan }}</td>
+                                        <td>{{ $data->deadline }}</td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="/tampilkandata/{{ $data->id }}">
+                                                <i class="fas fa-pencil-alt">
+                                                </i>
+                                                Edit
+                                            </a>
+                                            <a class="btn btn-danger btn-sm" href="/delete/{{ $data->id }}">
+                                                <i class="fas fa-trash">
+                                                </i>
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional
-                                        content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-
-                            <div class="card card-primary card-outline">
-                                <div class="card-header">
-                                    <h5 class="m-0">Featured</h5>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-title">Special title treatment</h6>
-
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional
-                                        content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.col-md-6 -->
-                    </div>
-                    <!-- /.row -->
-                </div><!-- /.container-fluid -->
+                            </tbody>
+                        </table>
+                    </table>
+                </div>
             </div>
-            <!-- /.content -->
+
+            <!-- /.col-md-6 -->
         </div>
-        <!-- /.content-wrapper -->
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-            <div class="p-3">
-                <h5>Title</h5>
-                <p>Sidebar content</p>
-            </div>
-        </aside>
-        <!-- /.control-sidebar -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+        <div class="p-3">
+            <h5>Title</h5>
+            <p>Sidebar content</p>
+        </div>
+    </aside>
+    <!-- /.control-sidebar -->
 
-        <!-- Main Footer -->
-        @include('Template.footer')
+    <!-- Main Footer -->
+    @include('Template.footer')
     </div>
     <!-- ./wrapper -->
 
