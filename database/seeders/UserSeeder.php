@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Borangdosen;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
@@ -16,9 +17,9 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //
-        User::truncate();
-        User::create([
+        // //
+        // User::truncate();
+        $user = User::create([
             'name' => 'Admin Aplikasi',
             'level' => 'admin',
             'email' => 'admin@admin.com',
@@ -26,11 +27,11 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(60),
         ]);
 
-        DB::table('borangdosens')->insert([
+        Borangdosen::create([
+            'user_id' => $user->id,
             'nama' => 'Hernu',
             'keterangan' => 'developer',
-            'deadline' => 'deadline',
-            'aksi' => "crud",
+            'deadline' => 'deadline'
         ]);
     }
 }

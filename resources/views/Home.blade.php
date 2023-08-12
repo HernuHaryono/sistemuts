@@ -47,7 +47,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Main content -->
 
             <div class="container">
-                <a href="{{ route('tambahdokumen') }}" type="button" class="btn btn-success">Tambah +</a>
+                <a href="{{ route('tambahdokumen') }}" type="button" class="btn btn-success">Tambah <i
+                        class="fas fa-plus-square"></i></a>
                 <br>
                 <br>
                 <div class="row">
@@ -68,26 +69,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </tr>
                             </thead>
                             <tbody>
-                                @php
-                                    $no = 1;
-                                @endphp
-                                @foreach ($borang as $data)
+                                @foreach ($borang as $no => $data)
                                     <tr>
-                                        <th scope="row">{{ $no++ }}</th>
+                                        <td scope="row">{{ $no + 1 }}</td>
                                         <td>{{ $data->nama }}</td>
                                         <td>{{ $data->keterangan }}</td>
                                         <td>{{ $data->deadline }}</td>
+                                        <td>{{ $data->dokumen }}</td>
                                         <td>
-                                            <a class="btn btn-info btn-sm" href="/tampilkandata/{{ $data->id }}">
-                                                <i class="fas fa-pencil-alt">
-                                                </i>
-                                                Edit
-                                            </a>
-                                            <a class="btn btn-danger btn-sm" href="/delete/{{ $data->id }}">
-                                                <i class="fas fa-trash">
-                                                </i>
-                                                Delete
-                                            </a>
+                                            <div>
+                                                <a class="btn btn-primary btn-sm"
+                                                    href="/uploadfile/{{ $data->id }}">
+                                                    <i class="fas fa-upload">
+                                                    </i>
+                                                    Upload
+                                                </a>
+                                                <a class="btn btn-info btn-sm"
+                                                    href="/tampilkandata/{{ $data->id }}">
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>
+                                                    Edit
+                                                </a>
+                                                <a class="btn btn-danger btn-sm" href="/delete/{{ $data->id }}">
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                    Delete
+                                                </a>
+                                                <a class="btn btn-secondary btn-sm" href="#">
+                                                    <i class="fas fa-cloud-download-alt">
+                                                    </i>
+                                                    Download
+                                                </a>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -5,9 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Borangdosen extends Model
+class Document extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['user_id', 'nama', 'keterangan', 'deadline'];
+    protected $fillable = [
+        'path',
+        'filename',
+        'deleted_at',
+        'borang_id',
+    ];
 }

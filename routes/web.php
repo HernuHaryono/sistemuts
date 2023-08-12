@@ -4,6 +4,8 @@ use App\Http\Controllers\BorangdosenController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UploadDataController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,11 +32,16 @@ route::group(['middleware' => ['auth']], function () {
     route::get('/home', [HomeController::class, 'index'])->name('home');
 });
 
-route::get('/borangdosen', [BorangdosenController::class, 'borangdosen'])->name('borangdosen');
+
+// gabungkan route yang satu controller         // proteksi dengan middleware
+Route::controller(BorangdosenController::class)->middleware('auth')->group(function () {
+    route::get('/borangdosen', 'borangdosen')->name('borangdosen');
+    route::post('/insertdata', 'insertdata')->name('insertdata');
+    route::get('/tampilkandata/{id}', 'tampilkandata')->name('tampilkandata');
+    route::post('/updatedata/{id}', 'updatedata')->name('updatedata');
+    route::get('/delete/{id}', 'delete')->name('delete');
+});
+
 route::get('/tambahdokumen', [HomeController::class, 'tambahdokumen'])->name('tambahdokumen');
-route::post('/insertdata', [BorangdosenController::class, 'insertdata'])->name('insertdata');
 
-route::get('/tampilkandata/{id}', [BorangdosenController::class, 'tampilkandata'])->name('tampilkandata');
-route::post('/updatedata/{id}', [BorangdosenController::class, 'updatedata'])->name('updatedata');
-
-route::get('/delete/{id}', [BorangdosenController::class, 'delete'])->name('delete');
+route::get('/uploadfile/{id}', [UploadDataController::class, 'uploadfile'])->name('uploadfile');

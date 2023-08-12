@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Borangdosen;
 use Illuminate\Database\Seeder;
 use App\Models\borangdosens;
+use App\Models\UploadFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
