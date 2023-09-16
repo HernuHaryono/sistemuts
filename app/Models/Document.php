@@ -11,7 +11,7 @@ class Document extends Model
     protected $fillable = [
         'path',
         'filename',
-        'deleted_at',
         'borang_id',
+        'deleted_at',
     ];
 }

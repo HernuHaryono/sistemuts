@@ -18,6 +18,11 @@
 </head>
 
 <body class="hold-transition login-page">
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="login-box">
         <div class="login-logo">
             <a href="../../index2.html"><b>Monitoring Borang Aktreditasi</b></a>
@@ -46,14 +51,14 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-8">
+                        {{-- <div class="col-8">
                             <div class="icheck-primary">
                                 <input type="checkbox" id="remember">
                                 <label for="remember">
                                     Remember Me
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- /.col -->
                         <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
@@ -65,12 +70,10 @@
 
                 <!-- /.social-auth-links -->
 
-                <p class="mb-1">
-                    <a href="forgot-password.html">I forgot my password</a>
-                </p>
                 <p class="mb-0">
-                    <a href="register.html" class="text-center">Register a new membership</a>
+                    <a href="{{ route('registrasi') }}" class="text-center">Belum Daftar? Register</a>
                 </p>
+
             </div>
             <!-- /.login-card-body -->
         </div>
@@ -80,7 +83,7 @@
 
     <!-- jQuery -->
     @include('Template.script')
-    <b>Universitas Teknologi Surabaya</b>
+    <b class="text-primary">Universitas Teknologi Surabaya</b>
 </body>
 
 </html>

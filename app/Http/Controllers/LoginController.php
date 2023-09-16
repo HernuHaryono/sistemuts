@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    //
+
     public function halamanlogin()
     {
         return view('Template.Login.Login-aplikasi');
@@ -18,15 +18,24 @@ class LoginController extends Controller
 
     public function postlogin(Request $request)
     {
-        if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect('/home');
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('home');
         }
+
+        return redirect()->route('login')->with('error', 'Email atau password salah.');
+
+        // if (Auth::attempt($request->only('email', 'password'))) {
+
+        //     return redirect('/home')->with('success', 'Welcome Back');
+        // }
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('/');
+        return redirect('/login');
     }
 
     public function registrasi()
@@ -45,6 +54,7 @@ class LoginController extends Controller
             'remember_token' => Str::random(60)
         ]);
 
-        return view('welcome');
+        // return view('welcome');
+        return redirect('/login');
     }
 }

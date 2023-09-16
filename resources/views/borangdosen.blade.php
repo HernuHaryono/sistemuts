@@ -24,6 +24,7 @@
                     <div class="card-body">
                         <form action="{{ route('insertdata') }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" value="{{ Auth::id() }}" name="user_id">
                             <div class="mb-3">
                                 <label for="exampleInputText" class="form-label">Nama</label>
                                 <input type="text" name="nama" class="form-control" id="exampleInputText"

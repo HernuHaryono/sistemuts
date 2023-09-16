@@ -20,7 +20,7 @@
 <body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
-            <a href="{{ url('/') }}"><b>Borang UTS</b></a>
+            <a href="{{ url('/') }}"><b>Monitoring Borang Aktreditasi</b></a>
         </div>
 
         <div class="card">
@@ -77,6 +77,7 @@
 
     <!-- jQuery -->
     @include('Template.script')
+    <b class="text-primary">Universitas Teknologi Surabaya</b>
 </body>
 
 </html>

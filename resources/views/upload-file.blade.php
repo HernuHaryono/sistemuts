@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Upload Data</title>
+    <title>Tambah Data</title>
 </head>
 
 <body>
@@ -22,16 +22,20 @@
             <div class="col-8">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('uploadfile{id}') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('upload.action', ['borangId' => $borang->id]) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
-                            <div class="input-group mb-3">
-                                <input type="file" class="form-control" id="inputGroupFile02">
-                                <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                            <div class="">
+                                <label for="exampleInputText" class="form-label">Pilih File</label>
+                                <input type="file" name="document" class="form-control">
                             </div>
-
-                            <button type="submit" class="btn btn-primary">Submit</button>
-
-
+                            @error('document')
+                                <div class="mb-4">
+                                    <span class="text-danger">{{ $message }}</span>
+                                </div>
+                            @enderror
+                            <div style="margin-bottom: 20px"></div>
+                            <button type="submit" class="btn btn-success">Upload</button>
                         </form>
                     </div>
                 </div>

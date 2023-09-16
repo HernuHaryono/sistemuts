@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Borangdosen;
 use Illuminate\Database\Seeder;
 use App\Models\borangdosens;
+use App\Models\Document;
 use App\Models\UploadFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Response;
 
 class BorangdosenController extends Controller
 {
     //
+
     public function index()
     { {
             $users = DB::select('select * from sistemuts');
@@ -22,6 +25,7 @@ class BorangdosenController extends Controller
     public function insertdata(Request $request)
     {
         //dd($request->all());
+
         Borangdosen::create($request->all());
         return redirect()->route('home')->with('success', 'Data Berhasil Ditambahkan');
     }
@@ -42,6 +46,10 @@ class BorangdosenController extends Controller
 
     public function delete($id)
     {
+        // dd($id);
+        $data = Document::where('borang_id', $id)->first();
+        $data->delete();
+
         $data = Borangdosen::find($id);
         $data->delete();
         return redirect()->route('home')->with('success', 'Data Berhasil Dihapus');

@@ -27,11 +27,11 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(60),
         ]);
 
-        Borangdosen::create([
-            'user_id' => $user->id,
-            'nama' => 'Hernu',
-            'keterangan' => 'developer',
-            'deadline' => 'deadline'
-        ]);
+        // Borangdosen::create([
+        //     'user_id' => $user->id,
+        //     //'nama' => 'Hernu',
+        //     //'keterangan' => 'developer',
+        //     'deadline' => 'deadline'e
+        // ]);
     }
 }

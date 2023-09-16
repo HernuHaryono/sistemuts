@@ -19,6 +19,7 @@ class CreateBorangdosensTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('nama');
             $table->string('keterangan');
+            $table->string('status');
             $table->string('deadline');
             $table->timestamps();
         });
